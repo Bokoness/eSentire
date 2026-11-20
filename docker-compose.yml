@@ -1,0 +1,54 @@
+# One command for the whole stack:   docker compose up --build
+#   postgres  database (host port 5433, also used by the local `npm run dev` workflow)
+# Host ports can be changed if they are taken, e.g.:  ATLAS_WEB_PORT=9090 ATLAS_DB_PORT=5434 docker compose up --build
+#   api       migrates + seeds the database on start, then serves the REST API
+#   web       built Vue app on http://localhost:8080 (nginx proxies /api to the api service)
+# For local development only the database is started: `npm run db:up` (= docker compose up -d postgres).
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: atlas
+      POSTGRES_PASSWORD: atlas # dev-only credentials
+      POSTGRES_DB: atlas
+    ports:
+      - "127.0.0.1:${ATLAS_DB_PORT:-5433}:5432"
+    volumes:
+      - atlas-pgdata:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro # creates the separate atlas_test database
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U atlas -d atlas"]
+      interval: 2s
+      timeout: 3s
+      retries: 20
+
+  api:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    environment:
+      DATABASE_URL: postgresql://atlas:atlas@postgres:5432/atlas?schema=public
+      API_PORT: "3001"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3001/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+      start_period: 10s
+
+  web:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    ports:
+      - "127.0.0.1:${ATLAS_WEB_PORT:-8080}:80"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  atlas-pgdata:

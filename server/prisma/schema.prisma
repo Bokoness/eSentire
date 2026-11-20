@@ -1,0 +1,114 @@
+// Threat intelligence data model.
+// Design rules (see README "Data model"):
+//  - Every relationship row is ONE claim made by ONE source. Claims are never merged.
+//  - Source-specific shapes are kept verbatim in `raw`; type-specific fields live in `attributes`.
+//  - `*Normalized` columns hold lower-cased, whitespace-collapsed text used for exact
+//    matching (ingestion resolution) and indexed lookups. Display always uses the original.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Entity {
+  id             String   @id @default(uuid()) @db.Uuid
+  externalId     String   @unique // "actor-apt29" or legacy "TA-0044"
+  name           String
+  nameNormalized String
+  // threat_actor | vulnerability | campaign | sector | malware | software | infrastructure | tool
+  type           String
+  description    String?
+  // Type-specific facts: cvss, published, origin_country, kind (ip/domain), entity-level confidence/sources...
+  attributes     Json     @default("{}")
+  raw            Json // original record exactly as ingested
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  aliases  Alias[]
+  outgoing Relationship[] @relation("RelFrom")
+  incoming Relationship[] @relation("RelTo")
+
+  @@index([type])
+  @@index([nameNormalized])
+  @@map("entities")
+}
+
+model Alias {
+  id              String @id @default(uuid()) @db.Uuid
+  entityId        String @db.Uuid
+  value           String
+  valueNormalized String
+  entity          Entity @relation(fields: [entityId], references: [id], onDelete: Cascade)
+
+  // Same alias may belong to many entities (alias collisions are real), but not twice to one entity.
+  @@unique([entityId, valueNormalized])
+  @@index([valueNormalized])
+  @@map("aliases")
+}
+
+model Source {
+  id         String  @id @default(uuid()) @db.Uuid
+  externalId String  @unique // "src-gov-adv", or technical "src-seed-text"
+  name       String
+  type       String // government | vendor | internal | osint | derived
+  // Admiralty-style A–F reliability of the SOURCE. Not the confidence of any claim.
+  reliability String?
+
+  relationships Relationship[]
+
+  @@map("sources")
+}
+
+model Relationship {
+  id           String @id @default(uuid()) @db.Uuid
+  externalId   String @unique // "rel-001", or deterministic "derived-<hash>" for text extraction
+  fromEntityId String @db.Uuid
+  toEntityId   String @db.Uuid
+  sourceId     String @db.Uuid
+  type         String // kept as given: exploits, uses, uses_tool, same_as, ...
+
+  // Confidence exactly as the source stated it: {confidence?, confidence_label?, qualifier?}. Null = unknown.
+  confidenceRaw   Json?
+  // Only when the source gave an explicit number in [0,1]. Never derived from labels.
+  confidenceScore Float?
+  qualifier       String? // reported | suspected (source value)
+  status          String? // e.g. "retracted". Absence does NOT mean confirmed.
+  note            String?
+  asOfRaw         String? // kept verbatim: "Q3 2022", "1/9/24" are not guessed into dates
+
+  // Text-extracted claims only:
+  evidence   String? // the sentence the claim was read from
+  derivation Json? // {method, recordId, field, rule}
+
+  raw       Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  from   Entity @relation("RelFrom", fields: [fromEntityId], references: [id], onDelete: Cascade)
+  to     Entity @relation("RelTo", fields: [toEntityId], references: [id], onDelete: Cascade)
+  source Source @relation(fields: [sourceId], references: [id])
+
+  @@index([fromEntityId])
+  @@index([toEntityId])
+  @@index([type])
+  @@map("relationships")
+}
+
+model IngestionIssue {
+  id        String   @id @default(uuid()) @db.Uuid
+  recordId  String // external id of the offending record, e.g. "rel-032"
+  issueType String // ambiguous_reference | unresolved_reference | temporal_anomaly | invalid_record
+  field     String // which field the issue is about ("to", "from", "as_of", "record")
+  details   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Re-running ingestion updates the same issue instead of piling up duplicates.
+  @@unique([recordId, issueType, field])
+  @@index([recordId])
+  @@map("ingestion_issues")
+}

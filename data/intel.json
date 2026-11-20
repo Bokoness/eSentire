@@ -1,0 +1,1636 @@
+{
+  "meta": {
+    "name": "eSentire take-home seed: threat intelligence",
+    "version": "0.3",
+    "generated": "synthetic",
+    "disclaimer": "ILLUSTRATIVE DATA ONLY. Attributions are simplified, confidence values are synthetic, and indicators use reserved documentation address space. Do not treat as authoritative intelligence.",
+    "notes": "Records arrive in mixed shapes. Some use 'id/type/name/aliases', others 'ref/kind/title/also_known_as'. Relationship endpoints may be an id, a legacy ref, a bare name, an alias, or may not exist in this file."
+  },
+  "sources": [
+    {
+      "id": "src-gov-adv",
+      "name": "Government / joint advisory",
+      "reliability": "A",
+      "type": "government"
+    },
+    {
+      "id": "src-vendor-a",
+      "name": "Major vendor threat research blog",
+      "reliability": "B",
+      "type": "vendor"
+    },
+    {
+      "id": "src-vendor-b",
+      "name": "Mid-tier vendor report",
+      "reliability": "C",
+      "type": "vendor"
+    },
+    {
+      "id": "src-analyst",
+      "name": "eSentire TRU analyst note",
+      "reliability": "B",
+      "type": "internal"
+    },
+    {
+      "id": "src-forum",
+      "name": "Underground forum post (unverified)",
+      "reliability": "E",
+      "type": "osint"
+    },
+    {
+      "id": "src-blog",
+      "name": "Anonymous security blog",
+      "reliability": "F",
+      "type": "osint"
+    }
+  ],
+  "entities": [
+    {
+      "id": "actor-apt29",
+      "type": "threat_actor",
+      "name": "APT29",
+      "description": "Suspected state-sponsored espionage group. Known for stealthy, long-dwell intrusions and supply-chain operations. Has been observed exploiting Log4Shell. Shares infrastructure and tradecraft overlaps with APT28.",
+      "aliases": [
+        "Cozy Bear",
+        "Nobelium",
+        "Midnight Blizzard",
+        "The Dukes",
+        "UNC2452"
+      ],
+      "first_seen": "2008",
+      "motivation": "espionage",
+      "origin_country": "RU",
+      "confidence": "medium",
+      "sources": [
+        "src-gov-adv",
+        "src-vendor-a"
+      ]
+    },
+    {
+      "id": "actor-apt28",
+      "type": "threat_actor",
+      "name": "APT28",
+      "description": "State-sponsored group focused on intelligence collection. Overlaps with APT29 on infrastructure in some reporting.",
+      "aliases": [
+        "Fancy Bear",
+        "Sofacy",
+        "Strontium",
+        "Forest Blizzard"
+      ],
+      "first_seen": "2004-01",
+      "motivation": "espionage",
+      "origin_country": "RU",
+      "confidence": "high",
+      "sources": [
+        "src-gov-adv"
+      ]
+    },
+    {
+      "id": "actor-sandworm",
+      "type": "threat_actor",
+      "name": "Sandworm",
+      "description": "Destructive and disruptive operations against energy, government and logistics targets. Linked to NotPetya and attacks on power grids.",
+      "aliases": [
+        "Voodoo Bear",
+        "Seashell Blizzard",
+        "Iridium",
+        "ELECTRUM"
+      ],
+      "first_seen": "2009",
+      "motivation": "disruption",
+      "origin_country": "RU",
+      "confidence": "high",
+      "sources": [
+        "src-gov-adv",
+        "src-vendor-a"
+      ]
+    },
+    {
+      "id": "actor-lazarus",
+      "type": "threat_actor",
+      "name": "Lazarus Group",
+      "description": "North Korea-linked umbrella of clusters conducting espionage, destructive attacks and revenue-generating theft. Sub-clusters (e.g. Bluenoroff / APT38) focus on finance.",
+      "aliases": [
+        "HIDDEN COBRA",
+        "Zinc",
+        "Diamond Sleet",
+        "Labyrinth Chollima"
+      ],
+      "first_seen": "2009",
+      "motivation": "espionage, financial",
+      "origin_country": "KP",
+      "confidence": "high",
+      "sources": [
+        "src-gov-adv"
+      ]
+    },
+    {
+      "id": "actor-turla",
+      "type": "threat_actor",
+      "name": "Turla",
+      "description": "Long-running espionage group with sophisticated implants and satellite-based C2 hijacking reported.",
+      "aliases": [
+        "Snake",
+        "Venomous Bear",
+        "Waterbug",
+        "Secret Blizzard",
+        "Uroburos"
+      ],
+      "first_seen": "2004",
+      "motivation": "espionage",
+      "origin_country": "RU",
+      "confidence": "high",
+      "sources": [
+        "src-gov-adv"
+      ]
+    },
+    {
+      "id": "actor-apt41",
+      "type": "threat_actor",
+      "name": "APT41",
+      "description": "Chinese-nexus group conducting both state-sponsored espionage and financially motivated intrusions.",
+      "aliases": [
+        "Winnti",
+        "Barium",
+        "Wicked Panda",
+        "Brass Typhoon"
+      ],
+      "first_seen": "2012",
+      "motivation": "espionage, financial",
+      "origin_country": "CN",
+      "confidence": "high",
+      "sources": [
+        "src-vendor-a"
+      ]
+    },
+    {
+      "id": "actor-volt",
+      "type": "threat_actor",
+      "name": "Volt Typhoon",
+      "description": "China-linked actor pre-positioning in US critical infrastructure networks using living-off-the-land techniques.",
+      "aliases": [
+        "Bronze Silhouette",
+        "Vanguard Panda",
+        "Insidious Taurus"
+      ],
+      "first_seen": "2021",
+      "motivation": "pre-positioning",
+      "origin_country": "CN",
+      "confidence": "medium",
+      "sources": [
+        "src-gov-adv",
+        "src-vendor-b"
+      ]
+    },
+    {
+      "id": "actor-hafnium",
+      "type": "threat_actor",
+      "name": "Hafnium",
+      "description": "China-linked group known for mass exploitation of on-premises Microsoft Exchange servers in early 2021.",
+      "aliases": [
+        "Silk Typhoon"
+      ],
+      "first_seen": "2021",
+      "motivation": "espionage",
+      "origin_country": "CN",
+      "confidence": "high",
+      "sources": [
+        "src-vendor-a"
+      ]
+    },
+    {
+      "id": "actor-scattered-spider",
+      "type": "threat_actor",
+      "name": "Scattered Spider",
+      "description": "English-speaking, financially motivated group skilled in help-desk social engineering, SIM swapping and identity-provider abuse.",
+      "aliases": [
+        "UNC3944",
+        "Octo Tempest",
+        "Muddled Libra",
+        "Scatter Swine"
+      ],
+      "first_seen": "2022",
+      "motivation": "financial",
+      "confidence": "high",
+      "sources": [
+        "src-vendor-a",
+        "src-vendor-b"
+      ]
+    },
+    {
+      "id": "actor-fin7",
+      "type": "threat_actor",
+      "name": "FIN7",
+      "description": "Financially motivated group targeting retail, hospitality and finance; also ran a front company recruiting for ransomware work.",
+      "aliases": [
+        "Carbon Spider",
+        "Navigator Group",
+        "Carbanak"
+      ],
+      "first_seen": "2013",
+      "motivation": "financial",
+      "confidence": "high",
+      "sources": [
+        "src-vendor-a"
+      ]
+    },
+    {
+      "id": "actor-cl0p",
+      "type": "threat_actor",
+      "name": "Cl0p",
+      "description": "Ransomware and extortion operation known for mass exploitation of file-transfer products. Overlaps with the TA505 cluster.",
+      "aliases": [
+        "Clop",
+        "TA505 (overlap)",
+        "Lace Tempest"
+      ],
+      "first_seen": "2019",
+      "motivation": "financial",
+      "confidence": "medium",
+      "sources": [
+        "src-vendor-a",
+        "src-forum"
+      ]
+    },
+    {
+      "id": "actor-lockbit",
+      "type": "threat_actor",
+      "name": "LockBit",
+      "description": "Ransomware-as-a-service operation; affiliates have exploited edge-device vulnerabilities for initial access.",
+      "aliases": [
+        "LockBit 3.0",
+        "LockBit Black"
+      ],
+      "first_seen": "2019",
+      "motivation": "financial",
+      "confidence": "high",
+      "sources": [
+        "src-gov-adv"
+      ]
+    },
+    {
+      "id": "actor-kimsuky",
+      "type": "threat_actor",
+      "name": "Kimsuky",
+      "description": "North Korea-linked espionage cluster focused on policy, think tank and nuclear-related targets.",
+      "aliases": [
+        "Velvet Chollima",
+        "Emerald Sleet",
+        "Thallium",
+        "APT43"
+      ],
+      "first_seen": "2012",
+      "motivation": "espionage",
+      "origin_country": "KP",
+      "confidence": "medium",
+      "sources": [
+        "src-vendor-b"
+      ]
+    },
+    {
+      "id": "actor-oilrig",
+      "type": "threat_actor",
+      "name": "APT34",
+      "description": "Iran-linked espionage group targeting government, energy and telecom in the Middle East.",
+      "aliases": [
+        "OilRig",
+        "Helix Kitten",
+        "Hazel Sandstorm"
+      ],
+      "first_seen": "2014",
+      "motivation": "espionage",
+      "origin_country": "IR",
+      "confidence": "medium",
+      "sources": [
+        "src-vendor-b"
+      ]
+    },
+    {
+      "ref": "TA-0012",
+      "kind": "APT",
+      "title": "Berserk Bear",
+      "also_known_as": "Dragonfly; Dragonfly 2.0; Crouching Yeti",
+      "summary": "Russia-linked group targeting energy and industrial sectors through supply-chain and watering-hole compromise. Some vendors treat this as distinct from Energetic Bear; others merge them.",
+      "firstSeen": "2010",
+      "conf": 0.6
+    },
+    {
+      "ref": "TA-0013",
+      "kind": "APT",
+      "title": "Energetic Bear",
+      "also_known_as": "Dragonfly",
+      "summary": "Energy-sector focused intrusion set. Possibly the same as Berserk Bear. Naming differs by vendor.",
+      "firstSeen": "2012",
+      "conf": 0.4
+    },
+    {
+      "ref": "TA-0044",
+      "kind": "APT",
+      "title": "Cozy Bear",
+      "also_known_as": "APT29; The Dukes",
+      "summary": "Russian intelligence-linked group. (Imported from legacy feed; likely duplicate of APT29.)",
+      "firstSeen": "2008",
+      "conf": 0.9
+    },
+    {
+      "ref": "TA-0051",
+      "kind": "APT",
+      "title": "Kimsuky (legacy)",
+      "also_known_as": "Velvet Chollima; HIDDEN COBRA",
+      "summary": "NK espionage. Legacy feed tagged this with the US-CERT umbrella label HIDDEN COBRA, which is also used for Lazarus.",
+      "firstSeen": "2013"
+    },
+    {
+      "id": "vuln-cve-2021-44228",
+      "type": "vulnerability",
+      "name": "CVE-2021-44228",
+      "description": "Critical remote code execution flaw in Apache Log4j. Widely exploited across many actors and campaigns. Affects software that bundles the Log4j library.",
+      "aliases": [
+        "Log4Shell"
+      ],
+      "cvss": 10.0,
+      "cisa_kev": true,
+      "published": "2021-12-10",
+      "affected_products": [
+        "Apache Log4j 2"
+      ],
+      "severity": "critical"
+    },
+    {
+      "id": "vuln-cve-2023-23397",
+      "type": "vulnerability",
+      "name": "CVE-2023-23397",
+      "description": "Elevation-of-privilege flaw in Microsoft Outlook. Reported to have been used by APT28 in targeted operations.",
+      "cvss": "9.8",
+      "cisa_kev": true,
+      "published": "03/14/2023",
+      "affected_products": [
+        "Microsoft Outlook"
+      ]
+    },
+    {
+      "id": "vuln-cve-2021-26855",
+      "type": "vulnerability",
+      "name": "CVE-2021-26855",
+      "description": "Server-side request forgery in Microsoft Exchange, chained with other flaws for pre-auth remote code execution.",
+      "aliases": [
+        "ProxyLogon"
+      ],
+      "cvss": 9.8,
+      "cisa_kev": true,
+      "published": "March 2021",
+      "affected_products": [
+        "Microsoft Exchange Server"
+      ]
+    },
+    {
+      "id": "vuln-cve-2023-34362",
+      "type": "vulnerability",
+      "name": "CVE-2023-34362",
+      "description": "SQL injection in Progress MOVEit Transfer leading to data theft; exploited at scale in mid-2023.",
+      "cvss": 9.8,
+      "cisa_kev": true,
+      "published": "2023-05-31",
+      "affected_products": [
+        "Progress MOVEit Transfer"
+      ]
+    },
+    {
+      "id": "vuln-cve-2023-4966",
+      "type": "vulnerability",
+      "name": "CVE-2023-4966",
+      "description": "Sensitive information disclosure in NetScaler ADC and Gateway allowing session token theft.",
+      "aliases": [
+        "Citrix Bleed"
+      ],
+      "cvss": 9.4,
+      "cisa_kev": true,
+      "published": "2023-10-10",
+      "affected_products": [
+        "Citrix NetScaler ADC",
+        "Citrix NetScaler Gateway"
+      ]
+    },
+    {
+      "id": "vuln-cve-2020-1472",
+      "type": "vulnerability",
+      "name": "CVE-2020-1472",
+      "description": "Netlogon elevation-of-privilege allowing domain controller takeover.",
+      "aliases": [
+        "Zerologon"
+      ],
+      "cvss": 10.0,
+      "cisa_kev": true,
+      "published": "2020-08-11",
+      "affected_products": [
+        "Windows Server"
+      ]
+    },
+    {
+      "id": "vuln-cve-2021-34527",
+      "type": "vulnerability",
+      "name": "CVE-2021-34527",
+      "description": "Windows Print Spooler remote code execution.",
+      "aliases": [
+        "PrintNightmare"
+      ],
+      "cisa_kev": true,
+      "published": "2021-07",
+      "affected_products": [
+        "Windows Print Spooler"
+      ],
+      "note": "CVSS missing in source feed"
+    },
+    {
+      "id": "vuln-cve-2022-30190",
+      "type": "vulnerability",
+      "name": "CVE-2022-30190",
+      "description": "MSDT remote code execution triggered via Office documents.",
+      "aliases": [
+        "Follina"
+      ],
+      "cvss": 7.8,
+      "cisa_kev": true,
+      "published": "2022-05-30",
+      "affected_products": [
+        "Microsoft Office",
+        "Windows MSDT"
+      ]
+    },
+    {
+      "id": "vuln-cve-2019-19781",
+      "type": "vulnerability",
+      "name": "CVE-2019-19781",
+      "description": "Path traversal in Citrix ADC and Gateway enabling unauthenticated RCE.",
+      "cvss": 9.8,
+      "cisa_kev": true,
+      "published": "2019-12-17",
+      "affected_products": [
+        "Citrix ADC",
+        "Citrix Gateway"
+      ]
+    },
+    {
+      "id": "vuln-cve-2024-3400",
+      "type": "vulnerability",
+      "name": "CVE-2024-3400",
+      "description": "Command injection in the GlobalProtect feature of Palo Alto Networks PAN-OS.",
+      "cvss": 10.0,
+      "cisa_kev": true,
+      "published": "2024-04-12",
+      "affected_products": [
+        "Palo Alto PAN-OS"
+      ]
+    },
+    {
+      "id": "vuln-cve-2023-20198",
+      "type": "vulnerability",
+      "name": "CVE-2023-20198",
+      "description": "Privilege escalation in the Web UI of Cisco IOS XE software.",
+      "cvss": 10.0,
+      "cisa_kev": true,
+      "published": "2023-10-16",
+      "affected_products": [
+        "Cisco IOS XE"
+      ],
+      "note": "No actor linked yet"
+    },
+    {
+      "id": "vuln-cve-2024-39717",
+      "type": "vulnerability",
+      "name": "CVE-2024-39717",
+      "description": "Versa Director vulnerability reported as exploited against service providers.",
+      "cvss": 7.2,
+      "published": "2024-08",
+      "affected_products": [
+        "Versa Director"
+      ]
+    },
+    {
+      "id": "camp-sunburst",
+      "type": "campaign",
+      "name": "SolarWinds / SUNBURST",
+      "description": "Supply-chain compromise attributed to APT29. Affected numerous downstream organizations via a trojanized software update.",
+      "aliases": [
+        "SUNBURST",
+        "Solorigate",
+        "StellarParticle"
+      ],
+      "first_seen": "2020-03",
+      "last_seen": "2020-12",
+      "confidence": "high"
+    },
+    {
+      "id": "camp-notpetya",
+      "type": "campaign",
+      "name": "NotPetya",
+      "description": "Destructive wiper campaign disguised as ransomware, spread through a compromised Ukrainian accounting software update.",
+      "first_seen": "2017-06",
+      "confidence": "high"
+    },
+    {
+      "id": "camp-moveit",
+      "type": "campaign",
+      "name": "MOVEit mass exploitation",
+      "description": "Mass exploitation of MOVEit Transfer to steal data from hundreds of organizations, followed by extortion.",
+      "aliases": [
+        "MOVEit campaign"
+      ],
+      "first_seen": "2023-05",
+      "confidence": "high"
+    },
+    {
+      "id": "camp-dream-job",
+      "type": "campaign",
+      "name": "Operation Dream Job",
+      "description": "Fake job offers used to deliver malware to targets in defense, aerospace and crypto sectors.",
+      "aliases": [
+        "DreamJob"
+      ],
+      "first_seen": "2020",
+      "confidence": "medium"
+    },
+    {
+      "id": "camp-volt-prepos",
+      "type": "campaign",
+      "name": "Volt Typhoon critical infrastructure pre-positioning",
+      "description": "Persistent access to communications, energy, water and transportation networks via edge-device exploitation and valid accounts.",
+      "first_seen": "2021",
+      "confidence": "medium"
+    },
+    {
+      "id": "camp-proxylogon",
+      "type": "campaign",
+      "name": "Exchange ProxyLogon mass exploitation",
+      "description": "Wave of exploitation of on-premises Exchange servers worldwide shortly after patch release.",
+      "aliases": [
+        "ProxyLogon campaign"
+      ],
+      "first_seen": "2021-01",
+      "confidence": "high"
+    },
+    {
+      "id": "camp-0ktapus",
+      "type": "campaign",
+      "name": "0ktapus",
+      "description": "Phishing campaign against identity-provider credentials of many organizations. Some reports use this as a name for the actor behind it.",
+      "aliases": [
+        "Oktapus"
+      ],
+      "first_seen": "2022",
+      "confidence": "medium"
+    },
+    {
+      "id": "camp-citrix-bleed",
+      "type": "campaign",
+      "name": "Citrix Bleed exploitation wave",
+      "description": "Exploitation of CVE-2023-4966 session hijacking across many sectors, including by ransomware affiliates.",
+      "first_seen": "2023-08",
+      "confidence": "medium"
+    },
+    {
+      "id": "camp-colonial",
+      "type": "campaign",
+      "name": "Colonial Pipeline ransomware incident",
+      "description": "Ransomware attack that disrupted fuel distribution on the US East Coast.",
+      "first_seen": "2021-05",
+      "confidence": "high"
+    },
+    {
+      "id": "mal-sunburst",
+      "type": "malware",
+      "name": "SUNBURST",
+      "description": "Backdoor delivered through a trojanized Orion update.",
+      "aliases": [
+        "Solorigate backdoor"
+      ]
+    },
+    {
+      "id": "mal-cobalt",
+      "type": "tool",
+      "name": "Cobalt Strike",
+      "description": "Commercial adversary-simulation framework widely abused by criminal and state actors.",
+      "aliases": [
+        "Beacon"
+      ],
+      "note": "Used by many unrelated actors; weak attribution signal"
+    },
+    {
+      "id": "mal-xagent",
+      "type": "malware",
+      "name": "X-Agent",
+      "description": "Modular backdoor with Windows, Linux, iOS and Android variants.",
+      "aliases": [
+        "CHOPSTICK",
+        "Sofacy implant"
+      ]
+    },
+    {
+      "id": "mal-notpetya",
+      "type": "malware",
+      "name": "NotPetya",
+      "description": "Wiper malware with worm-like lateral movement.",
+      "aliases": [
+        "ExPetr",
+        "Petya variant"
+      ]
+    },
+    {
+      "id": "mal-wannacry",
+      "type": "malware",
+      "name": "WannaCry",
+      "description": "Ransomware worm that spread using an SMB vulnerability in 2017.",
+      "aliases": [
+        "WannaCrypt"
+      ]
+    },
+    {
+      "id": "mal-snake",
+      "type": "malware",
+      "name": "Snake",
+      "description": "Sophisticated kernel-level implant and peer-to-peer network associated with Turla.",
+      "aliases": [
+        "Uroburos",
+        "Agent.BTZ lineage"
+      ]
+    },
+    {
+      "id": "mal-carbanak",
+      "type": "malware",
+      "name": "Carbanak",
+      "description": "Backdoor used in bank-heist operations; the name is also used for the group behind it.",
+      "aliases": [
+        "Anunak"
+      ]
+    },
+    {
+      "id": "mal-lemurloot",
+      "type": "malware",
+      "name": "LEMURLOOT",
+      "description": "Web shell used in the MOVEit campaign."
+    },
+    {
+      "id": "mal-cozyduke",
+      "type": "malware",
+      "name": "CozyDuke",
+      "description": "Malware family associated with APT29 operations.",
+      "aliases": [
+        "CozyCar",
+        "CozyBear implant"
+      ]
+    },
+    {
+      "id": "sector-government",
+      "type": "sector",
+      "name": "Government",
+      "description": "Industry sector: Government."
+    },
+    {
+      "id": "sector-technology",
+      "type": "sector",
+      "name": "Technology",
+      "description": "Industry sector: Technology."
+    },
+    {
+      "id": "sector-healthcare",
+      "type": "sector",
+      "name": "Healthcare",
+      "description": "Industry sector: Healthcare."
+    },
+    {
+      "id": "sector-defense",
+      "type": "sector",
+      "name": "Defense",
+      "description": "Industry sector: Defense."
+    },
+    {
+      "id": "sector-media",
+      "type": "sector",
+      "name": "Media",
+      "description": "Industry sector: Media."
+    },
+    {
+      "id": "sector-energy",
+      "type": "sector",
+      "name": "Energy",
+      "description": "Industry sector: Energy."
+    },
+    {
+      "id": "sector-finance",
+      "type": "sector",
+      "name": "Finance",
+      "description": "Industry sector: Finance."
+    },
+    {
+      "id": "sector-telecom",
+      "type": "sector",
+      "name": "Telecommunications",
+      "description": "Industry sector: Telecommunications."
+    },
+    {
+      "id": "sector-hospitality",
+      "type": "sector",
+      "name": "Hospitality",
+      "description": "Industry sector: Hospitality."
+    },
+    {
+      "id": "sector-critical-infra",
+      "type": "sector",
+      "name": "Critical infrastructure",
+      "description": "Industry sector: Critical infrastructure."
+    },
+    {
+      "id": "sector-retail",
+      "type": "sector",
+      "name": "Retail",
+      "description": "Industry sector: Retail."
+    },
+    {
+      "id": "sector-transport",
+      "type": "sector",
+      "name": "Transportation",
+      "description": "Industry sector: Transportation."
+    },
+    {
+      "id": "sw-log4j",
+      "type": "software",
+      "name": "Apache Log4j",
+      "description": "Software product: Apache Log4j."
+    },
+    {
+      "id": "sw-outlook",
+      "type": "software",
+      "name": "Microsoft Outlook",
+      "description": "Software product: Microsoft Outlook."
+    },
+    {
+      "id": "sw-exchange",
+      "type": "software",
+      "name": "Microsoft Exchange Server",
+      "description": "Software product: Microsoft Exchange Server."
+    },
+    {
+      "id": "sw-orion",
+      "type": "software",
+      "name": "SolarWinds Orion",
+      "description": "Software product: SolarWinds Orion."
+    },
+    {
+      "id": "sw-moveit",
+      "type": "software",
+      "name": "Progress MOVEit Transfer",
+      "description": "Software product: Progress MOVEit Transfer."
+    },
+    {
+      "id": "sw-netscaler",
+      "type": "software",
+      "name": "Citrix NetScaler",
+      "description": "Software product: Citrix NetScaler."
+    },
+    {
+      "id": "infra-001",
+      "type": "infrastructure",
+      "name": "203.0.113.45",
+      "description": "Synthetic C2 IP used in this exercise.",
+      "kind": "ip",
+      "first_seen": "2022-11"
+    },
+    {
+      "id": "infra-002",
+      "type": "infrastructure",
+      "name": "update-check[.]example-cdn[.]test",
+      "description": "Synthetic defanged C2 domain.",
+      "kind": "domain",
+      "first_seen": "2023-02"
+    },
+    {
+      "id": "infra-003",
+      "type": "infrastructure",
+      "name": "198.51.100.77",
+      "description": "Synthetic C2 IP used in this exercise.",
+      "kind": "ip"
+    },
+    {
+      "id": "infra-004",
+      "type": "infrastructure",
+      "name": "mail-portal[.]sample-host[.]test",
+      "description": "Synthetic defanged phishing/C2 domain.",
+      "kind": "domain",
+      "first_seen": "2021-06"
+    },
+    {
+      "id": "infra-005",
+      "type": "infrastructure",
+      "name": "192.0.2.130",
+      "description": "Synthetic C2 IP used in this exercise.",
+      "kind": "ip"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "actor-apt29",
+      "type": "exploits",
+      "to": "vuln-cve-2021-44228",
+      "source": "src-vendor-a",
+      "confidence": "reported",
+      "qualifier": "reported",
+      "as_of": "2021-03-15",
+      "id": "rel-001"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "exploits",
+      "to": "vuln-cve-2019-19781",
+      "source": "src-gov-adv",
+      "confidence_label": "HIGH",
+      "as_of": "Q3 2022",
+      "id": "rel-002"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "exploits",
+      "to": "vuln-cve-2023-23397",
+      "source": "src-gov-adv",
+      "note": "Targeted operations against government and defense",
+      "as_of": "2023",
+      "id": "rel-003"
+    },
+    {
+      "from": "actor-lazarus",
+      "type": "exploits",
+      "to": "vuln-cve-2021-44228",
+      "source": "src-vendor-a",
+      "confidence": 0.6,
+      "as_of": "1/9/24",
+      "id": "rel-004"
+    },
+    {
+      "from": "actor-apt41",
+      "type": "exploits",
+      "to": "vuln-cve-2021-44228",
+      "source": "src-vendor-a",
+      "confidence": "medium",
+      "id": "rel-005"
+    },
+    {
+      "from": "actor-apt41",
+      "type": "exploits",
+      "to": "vuln-cve-2019-19781",
+      "source": "src-vendor-a",
+      "confidence_label": "HIGH",
+      "as_of": "2020-06",
+      "id": "rel-006"
+    },
+    {
+      "from": "actor-hafnium",
+      "type": "exploits",
+      "to": "vuln-cve-2021-26855",
+      "source": "src-vendor-a",
+      "as_of": "2021-03-15",
+      "id": "rel-007"
+    },
+    {
+      "from": "actor-cl0p",
+      "type": "exploits",
+      "to": "vuln-cve-2023-34362",
+      "source": "src-gov-adv",
+      "confidence": 0.85,
+      "as_of": "Q3 2022",
+      "id": "rel-008"
+    },
+    {
+      "from": "actor-lockbit",
+      "type": "exploits",
+      "to": "vuln-cve-2023-4966",
+      "source": "src-gov-adv",
+      "confidence": "medium",
+      "note": "Affiliate-level activity",
+      "as_of": "2023",
+      "id": "rel-009"
+    },
+    {
+      "from": "actor-sandworm",
+      "type": "exploits",
+      "to": "vuln-cve-2023-23397",
+      "source": "src-blog",
+      "confidence_label": "SUSPECTED",
+      "qualifier": "suspected",
+      "note": "Single low-quality source",
+      "as_of": "1/9/24",
+      "id": "rel-010"
+    },
+    {
+      "from": "actor-volt",
+      "type": "exploits",
+      "to": "vuln-cve-2024-39717",
+      "source": "src-vendor-b",
+      "id": "rel-011"
+    },
+    {
+      "from": "actor-apt41",
+      "type": "exploits",
+      "to": "CVE-2021-26855",
+      "source": "src-vendor-b",
+      "confidence": 0.35,
+      "qualifier": "suspected",
+      "note": "Reported opportunistic use after public PoC",
+      "as_of": "2020-06",
+      "id": "rel-012"
+    },
+    {
+      "from": "vuln-cve-2021-44228",
+      "type": "affects",
+      "to": "sw-log4j",
+      "source": "src-gov-adv",
+      "confidence": "confirmed",
+      "as_of": "2021-03-15",
+      "id": "rel-013"
+    },
+    {
+      "from": "vuln-cve-2023-23397",
+      "type": "affects",
+      "to": "sw-outlook",
+      "source": "src-gov-adv",
+      "confidence_label": "CONFIRMED",
+      "as_of": "Q3 2022",
+      "id": "rel-014"
+    },
+    {
+      "from": "vuln-cve-2021-26855",
+      "type": "affects",
+      "to": "sw-exchange",
+      "source": "src-gov-adv",
+      "as_of": "2023",
+      "id": "rel-015"
+    },
+    {
+      "from": "vuln-cve-2023-34362",
+      "type": "affects",
+      "to": "sw-moveit",
+      "source": "src-gov-adv",
+      "confidence": 1.0,
+      "as_of": "1/9/24",
+      "id": "rel-016"
+    },
+    {
+      "from": "vuln-cve-2023-4966",
+      "type": "affects",
+      "to": "sw-netscaler",
+      "source": "src-gov-adv",
+      "confidence": "confirmed",
+      "id": "rel-017"
+    },
+    {
+      "from": "vuln-cve-2019-19781",
+      "type": "affects",
+      "to": "sw-netscaler",
+      "source": "src-gov-adv",
+      "confidence_label": "CONFIRMED",
+      "as_of": "2020-06",
+      "id": "rel-018"
+    },
+    {
+      "from": "camp-sunburst",
+      "type": "attributed_to",
+      "to": "actor-apt29",
+      "source": "src-gov-adv",
+      "as_of": "2021-03-15",
+      "id": "rel-019"
+    },
+    {
+      "from": "camp-sunburst",
+      "type": "attributed_to",
+      "to": "actor-apt28",
+      "source": "src-blog",
+      "confidence": 0.3,
+      "note": "Contradicts government attribution",
+      "as_of": "Q3 2022",
+      "id": "rel-020"
+    },
+    {
+      "from": "camp-sunburst",
+      "type": "affects",
+      "to": "sw-orion",
+      "source": "src-gov-adv",
+      "confidence": "confirmed",
+      "as_of": "2023",
+      "id": "rel-021"
+    },
+    {
+      "from": "camp-notpetya",
+      "type": "attributed_to",
+      "to": "Sandworm",
+      "source": "src-gov-adv",
+      "confidence_label": "HIGH",
+      "as_of": "1/9/24",
+      "id": "rel-022"
+    },
+    {
+      "from": "camp-moveit",
+      "type": "attributed_to",
+      "to": "actor-cl0p",
+      "source": "src-gov-adv",
+      "id": "rel-023"
+    },
+    {
+      "from": "camp-moveit",
+      "type": "exploits",
+      "to": "vuln-cve-2023-34362",
+      "source": "src-gov-adv",
+      "confidence": 1.0,
+      "as_of": "2020-06",
+      "id": "rel-024"
+    },
+    {
+      "from": "camp-dream-job",
+      "type": "attributed_to",
+      "to": "actor-lazarus",
+      "source": "src-vendor-a",
+      "confidence": "medium",
+      "as_of": "2021-03-15",
+      "id": "rel-025"
+    },
+    {
+      "from": "camp-volt-prepos",
+      "type": "attributed_to",
+      "to": "actor-volt",
+      "source": "src-gov-adv",
+      "confidence_label": "MEDIUM",
+      "as_of": "Q3 2022",
+      "id": "rel-026"
+    },
+    {
+      "from": "camp-proxylogon",
+      "type": "attributed_to",
+      "to": "actor-hafnium",
+      "source": "src-vendor-a",
+      "as_of": "2023",
+      "id": "rel-027"
+    },
+    {
+      "from": "camp-proxylogon",
+      "type": "exploits",
+      "to": "vuln-cve-2021-26855",
+      "source": "src-gov-adv",
+      "confidence": 1.0,
+      "as_of": "1/9/24",
+      "id": "rel-028"
+    },
+    {
+      "from": "camp-0ktapus",
+      "type": "attributed_to",
+      "to": "actor-scattered-spider",
+      "source": "src-vendor-b",
+      "confidence": "low",
+      "note": "Overlap in tradecraft; name sometimes used for the actor itself",
+      "id": "rel-029"
+    },
+    {
+      "from": "camp-citrix-bleed",
+      "type": "exploits",
+      "to": "vuln-cve-2023-4966",
+      "source": "src-gov-adv",
+      "confidence_label": "CONFIRMED",
+      "as_of": "2020-06",
+      "id": "rel-030"
+    },
+    {
+      "from": "camp-citrix-bleed",
+      "type": "attributed_to",
+      "to": "actor-lockbit",
+      "source": "src-gov-adv",
+      "as_of": "2021-03-15",
+      "id": "rel-031"
+    },
+    {
+      "from": "camp-colonial",
+      "type": "attributed_to",
+      "to": "DarkSide",
+      "source": "src-gov-adv",
+      "confidence": 0.85,
+      "note": "DarkSide is not in this dataset (orphan reference)",
+      "as_of": "Q3 2022",
+      "id": "rel-032"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "uses",
+      "to": "mal-sunburst",
+      "source": "src-gov-adv",
+      "confidence": "high",
+      "as_of": "2023",
+      "id": "rel-033"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "uses",
+      "to": "mal-cozyduke",
+      "source": "src-vendor-a",
+      "confidence_label": "HIGH",
+      "as_of": "1/9/24",
+      "id": "rel-034"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "uses",
+      "to": "mal-cobalt",
+      "source": "src-vendor-a",
+      "id": "rel-035"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "uses",
+      "to": "mal-xagent",
+      "source": "src-gov-adv",
+      "confidence": 0.85,
+      "as_of": "2020-06",
+      "id": "rel-036"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "uses_tool",
+      "to": "mal-cobalt",
+      "source": "src-vendor-b",
+      "confidence": "low",
+      "as_of": "2021-03-15",
+      "id": "rel-037"
+    },
+    {
+      "from": "actor-sandworm",
+      "type": "uses",
+      "to": "mal-notpetya",
+      "source": "src-gov-adv",
+      "confidence_label": "HIGH",
+      "as_of": "Q3 2022",
+      "id": "rel-038"
+    },
+    {
+      "from": "actor-lazarus",
+      "type": "uses",
+      "to": "mal-wannacry",
+      "source": "src-gov-adv",
+      "note": "Attribution is widely reported but not universally accepted",
+      "as_of": "2023",
+      "id": "rel-039"
+    },
+    {
+      "from": "actor-turla",
+      "type": "uses",
+      "to": "mal-snake",
+      "source": "src-gov-adv",
+      "confidence": 0.85,
+      "as_of": "1/9/24",
+      "id": "rel-040"
+    },
+    {
+      "from": "actor-fin7",
+      "type": "uses",
+      "to": "mal-carbanak",
+      "source": "src-vendor-a",
+      "confidence": "high",
+      "id": "rel-041"
+    },
+    {
+      "from": "actor-fin7",
+      "type": "uses",
+      "to": "mal-cobalt",
+      "source": "src-vendor-a",
+      "confidence_label": "HIGH",
+      "as_of": "2020-06",
+      "id": "rel-042"
+    },
+    {
+      "from": "actor-cl0p",
+      "type": "uses",
+      "to": "mal-lemurloot",
+      "source": "src-vendor-a",
+      "as_of": "2021-03-15",
+      "id": "rel-043"
+    },
+    {
+      "from": "actor-lockbit",
+      "type": "uses",
+      "to": "mal-cobalt",
+      "source": "src-vendor-b",
+      "confidence": 0.6,
+      "as_of": "Q3 2022",
+      "id": "rel-044"
+    },
+    {
+      "from": "actor-scattered-spider",
+      "type": "uses",
+      "to": "mal-cobalt",
+      "source": "src-vendor-b",
+      "confidence": "low",
+      "as_of": "2023",
+      "id": "rel-045"
+    },
+    {
+      "from": "mal-sunburst",
+      "type": "delivered_via",
+      "to": "camp-sunburst",
+      "source": "src-gov-adv",
+      "confidence_label": "CONFIRMED",
+      "as_of": "1/9/24",
+      "id": "rel-046"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "targets",
+      "to": "sector-government",
+      "source": "src-gov-adv",
+      "id": "rel-047"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "targets",
+      "to": "sector-technology",
+      "source": "src-gov-adv",
+      "confidence": 0.85,
+      "as_of": "2020-06",
+      "id": "rel-048"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "targets",
+      "to": "sector-healthcare",
+      "source": "src-vendor-a",
+      "confidence": "medium",
+      "as_of": "2021-03-15",
+      "id": "rel-049"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "targets",
+      "to": "sector-defense",
+      "source": "src-gov-adv",
+      "confidence_label": "HIGH",
+      "as_of": "Q3 2022",
+      "id": "rel-050"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "targets",
+      "to": "sector-government",
+      "source": "src-gov-adv",
+      "as_of": "2023",
+      "id": "rel-051"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "targets",
+      "to": "sector-media",
+      "source": "src-vendor-a",
+      "confidence": 0.6,
+      "as_of": "1/9/24",
+      "id": "rel-052"
+    },
+    {
+      "from": "actor-sandworm",
+      "type": "targets",
+      "to": "sector-energy",
+      "source": "src-gov-adv",
+      "confidence": "high",
+      "id": "rel-053"
+    },
+    {
+      "from": "actor-sandworm",
+      "type": "targets",
+      "to": "sector-government",
+      "source": "src-gov-adv",
+      "confidence_label": "MEDIUM",
+      "as_of": "2020-06",
+      "id": "rel-054"
+    },
+    {
+      "from": "actor-lazarus",
+      "type": "targets",
+      "to": "sector-finance",
+      "source": "src-gov-adv",
+      "as_of": "2021-03-15",
+      "id": "rel-055"
+    },
+    {
+      "from": "actor-lazarus",
+      "type": "targets",
+      "to": "sector-defense",
+      "source": "src-vendor-a",
+      "confidence": 0.6,
+      "as_of": "Q3 2022",
+      "id": "rel-056"
+    },
+    {
+      "from": "actor-turla",
+      "type": "targets",
+      "to": "sector-government",
+      "source": "src-gov-adv",
+      "confidence": "high",
+      "as_of": "2023",
+      "id": "rel-057"
+    },
+    {
+      "from": "actor-apt41",
+      "type": "targets",
+      "to": "sector-healthcare",
+      "source": "src-vendor-a",
+      "confidence_label": "MEDIUM",
+      "as_of": "1/9/24",
+      "id": "rel-058"
+    },
+    {
+      "from": "actor-apt41",
+      "type": "targets",
+      "to": "sector-technology",
+      "source": "src-vendor-a",
+      "id": "rel-059"
+    },
+    {
+      "from": "actor-volt",
+      "type": "targets",
+      "to": "sector-critical-infra",
+      "source": "src-gov-adv",
+      "confidence": 0.85,
+      "as_of": "2020-06",
+      "id": "rel-060"
+    },
+    {
+      "from": "actor-volt",
+      "type": "targets",
+      "to": "sector-telecom",
+      "source": "src-gov-adv",
+      "confidence": "medium",
+      "as_of": "2021-03-15",
+      "id": "rel-061"
+    },
+    {
+      "from": "actor-hafnium",
+      "type": "targets",
+      "to": "sector-healthcare",
+      "source": "src-vendor-a",
+      "confidence_label": "MEDIUM",
+      "as_of": "Q3 2022",
+      "id": "rel-062"
+    },
+    {
+      "from": "actor-scattered-spider",
+      "type": "targets",
+      "to": "sector-hospitality",
+      "source": "src-vendor-a",
+      "as_of": "2023",
+      "id": "rel-063"
+    },
+    {
+      "from": "actor-scattered-spider",
+      "type": "targets",
+      "to": "sector-telecom",
+      "source": "src-vendor-a",
+      "confidence": 0.6,
+      "as_of": "1/9/24",
+      "id": "rel-064"
+    },
+    {
+      "from": "actor-fin7",
+      "type": "targets",
+      "to": "sector-retail",
+      "source": "src-vendor-a",
+      "confidence": "high",
+      "id": "rel-065"
+    },
+    {
+      "from": "actor-fin7",
+      "type": "targets",
+      "to": "sector-hospitality",
+      "source": "src-vendor-a",
+      "confidence_label": "HIGH",
+      "as_of": "2020-06",
+      "id": "rel-066"
+    },
+    {
+      "from": "actor-cl0p",
+      "type": "targets",
+      "to": "sector-finance",
+      "source": "src-vendor-a",
+      "as_of": "2021-03-15",
+      "id": "rel-067"
+    },
+    {
+      "from": "actor-oilrig",
+      "type": "targets",
+      "to": "sector-energy",
+      "source": "src-vendor-b",
+      "confidence": 0.6,
+      "as_of": "Q3 2022",
+      "id": "rel-068"
+    },
+    {
+      "from": "actor-oilrig",
+      "type": "targets",
+      "to": "sector-telecom",
+      "source": "src-vendor-b",
+      "confidence": "medium",
+      "as_of": "2023",
+      "id": "rel-069"
+    },
+    {
+      "from": "actor-kimsuky",
+      "type": "targets",
+      "to": "sector-government",
+      "source": "src-vendor-b",
+      "confidence_label": "MEDIUM",
+      "as_of": "1/9/24",
+      "id": "rel-070"
+    },
+    {
+      "from": "TA-0012",
+      "type": "targets",
+      "to": "sector-energy",
+      "source": "src-vendor-b",
+      "id": "rel-071"
+    },
+    {
+      "from": "TA-0013",
+      "type": "targets",
+      "to": "sector-energy",
+      "source": "src-vendor-b",
+      "confidence": 0.6,
+      "as_of": "2020-06",
+      "id": "rel-072"
+    },
+    {
+      "from": "camp-moveit",
+      "type": "targets",
+      "to": "sector-finance",
+      "source": "src-vendor-a",
+      "confidence": "medium",
+      "as_of": "2021-03-15",
+      "id": "rel-073"
+    },
+    {
+      "from": "camp-moveit",
+      "type": "targets",
+      "to": "sector-healthcare",
+      "source": "src-vendor-a",
+      "confidence_label": "MEDIUM",
+      "as_of": "Q3 2022",
+      "id": "rel-074"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "overlaps_with",
+      "to": "actor-apt28",
+      "source": "src-vendor-a",
+      "qualifier": "reported",
+      "note": "Infrastructure overlap in some reporting; not consistently confirmed",
+      "as_of": "2023",
+      "id": "rel-075"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "overlaps_with",
+      "to": "actor-apt29",
+      "source": "src-vendor-b",
+      "confidence": 0.3,
+      "as_of": "1/9/24",
+      "id": "rel-076"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "same_as",
+      "to": "TA-0044",
+      "source": "src-analyst",
+      "confidence": "high",
+      "note": "Legacy duplicate record 'Cozy Bear'",
+      "id": "rel-077"
+    },
+    {
+      "from": "TA-0012",
+      "type": "same_as",
+      "to": "TA-0013",
+      "source": "src-vendor-b",
+      "confidence_label": "SUSPECTED",
+      "qualifier": "suspected",
+      "note": "Vendor naming differs",
+      "as_of": "2020-06",
+      "id": "rel-078"
+    },
+    {
+      "from": "actor-lazarus",
+      "type": "related_to",
+      "to": "actor-kimsuky",
+      "source": "src-vendor-b",
+      "note": "Both NK; HIDDEN COBRA label shared",
+      "as_of": "2021-03-15",
+      "id": "rel-079"
+    },
+    {
+      "from": "actor-cl0p",
+      "type": "overlaps_with",
+      "to": "TA505",
+      "source": "src-vendor-a",
+      "confidence": 0.6,
+      "note": "TA505 is not in this dataset (orphan reference)",
+      "as_of": "Q3 2022",
+      "id": "rel-080"
+    },
+    {
+      "from": "actor-fin7",
+      "type": "same_as",
+      "to": "mal-carbanak",
+      "source": "src-blog",
+      "confidence": "low",
+      "note": "Name collision: group vs malware",
+      "as_of": "2023",
+      "id": "rel-081"
+    },
+    {
+      "from": "actor-turla",
+      "type": "same_as",
+      "to": "mal-snake",
+      "source": "src-blog",
+      "confidence_label": "LOW",
+      "note": "Name collision: actor alias vs malware name",
+      "as_of": "1/9/24",
+      "id": "rel-082"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "uses_infrastructure",
+      "to": "infra-001",
+      "source": "src-vendor-a",
+      "id": "rel-083"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "uses_infrastructure",
+      "to": "infra-001",
+      "source": "src-vendor-b",
+      "confidence": 0.3,
+      "note": "Same IP reported by two vendors for different actors",
+      "as_of": "2020-06",
+      "id": "rel-084"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "uses_infrastructure",
+      "to": "infra-002",
+      "source": "src-vendor-a",
+      "confidence": "medium",
+      "as_of": "2021-03-15",
+      "id": "rel-085"
+    },
+    {
+      "from": "actor-apt29",
+      "type": "uses_infrastructure",
+      "to": "infra-004",
+      "source": "src-vendor-a",
+      "confidence_label": "MEDIUM",
+      "as_of": "Q3 2022",
+      "id": "rel-086"
+    },
+    {
+      "from": "actor-turla",
+      "type": "uses_infrastructure",
+      "to": "infra-003",
+      "source": "src-gov-adv",
+      "as_of": "2023",
+      "id": "rel-087"
+    },
+    {
+      "from": "actor-sandworm",
+      "type": "uses_infrastructure",
+      "to": "infra-005",
+      "source": "src-vendor-a",
+      "confidence": 0.6,
+      "as_of": "1/9/24",
+      "id": "rel-088"
+    },
+    {
+      "from": "actor-apt28",
+      "type": "uses_infrastructure",
+      "to": "infra-004",
+      "source": "src-vendor-b",
+      "confidence": "low",
+      "id": "rel-089"
+    },
+    {
+      "from": "camp-sunburst",
+      "type": "uses_infrastructure",
+      "to": "infra-002",
+      "source": "src-vendor-a",
+      "confidence_label": "MEDIUM",
+      "as_of": "2020-06",
+      "id": "rel-090"
+    },
+    {
+      "from": "actor-sandworm",
+      "type": "exploits",
+      "to": "CVE-2021-44228",
+      "source": "src-blog",
+      "qualifier": "reported",
+      "note": "RETRACTED by source in later update",
+      "status": "retracted",
+      "as_of": "2021-03-15",
+      "id": "rel-091"
+    }
+  ]
+}
